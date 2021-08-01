@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.hlink.Helper;
+package com.hlink.helper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Strings;
@@ -27,8 +27,6 @@ import com.hlink.utils.SampleUtils;
 import org.apache.commons.io.Charsets;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.net.URL;

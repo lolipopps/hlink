@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.hlink.Helper;
+package com.hlink.helper;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.flink.annotation.Public;
@@ -33,8 +33,6 @@ import org.apache.flink.runtime.minicluster.MiniCluster;
 import org.apache.flink.runtime.minicluster.MiniClusterConfiguration;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.graph.StreamGraph;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
 import java.net.URL;

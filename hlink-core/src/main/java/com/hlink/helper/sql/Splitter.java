@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.hlink.Helper.sql;
+package com.hlink.helper.sql;
 
 import java.util.ArrayList;
 import java.util.List;

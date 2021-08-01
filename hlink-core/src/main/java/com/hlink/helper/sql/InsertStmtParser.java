@@ -16,35 +16,29 @@
  * limitations under the License.
  */
 
-package com.hlink.Helper.sql;
+package com.hlink.helper.sql;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.flink.table.api.StatementSet;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
 import java.net.URL;
 import java.util.List;
-import java.util.regex.Pattern;
 
-/**
- * Remove add file and jar with statment etc. add file /etc/krb5.conf, add jar xxx.jar; This
- * statement is userd to upload files.
- */
-public class UploadFileStmtParser extends AbstractStmtParser {
 
-    private static final Pattern ADD_FILE_AND_JAR_PATTERN =
-            Pattern.compile("(?i).*add\\s+file\\s+.+|(?i).*add\\s+jar\\s+.+");
+public class InsertStmtParser extends AbstractStmtParser {
 
     @Override
-    public boolean canHandle(String stmt) {
-        return ADD_FILE_AND_JAR_PATTERN.matcher(stmt).find();
+    public boolean canHandle(String sql) {
+        return StringUtils.isNotBlank(sql) && sql.trim().toLowerCase().startsWith("insert");
     }
 
     @Override
     public void execStmt(
-            String stmt,
-            StreamTableEnvironment tEnv,
+            String sql,
+            StreamTableEnvironment tableEnvironment,
             StatementSet statementSet,
             List<URL> jarUrlList) {
-        // do nothing.
+        statementSet.addInsertSql(sql);
     }
 }

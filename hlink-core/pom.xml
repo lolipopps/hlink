@@ -63,7 +63,11 @@
             <artifactId>flink-runtime_2.12</artifactId>
             <version>${flink.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>2.4.1</version>
+        </dependency>
     </dependencies>
 
 

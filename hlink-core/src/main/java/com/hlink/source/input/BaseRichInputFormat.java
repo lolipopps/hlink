@@ -18,7 +18,7 @@
 
 package com.hlink.source.input;
 
-import com.hlink.Helper.FormatStateHelper;
+import com.hlink.helper.FormatStateHelper;
 import com.hlink.conf.FieldConf;
 import com.hlink.conf.FlinkCommonConf;
 import com.hlink.constants.Metrics;

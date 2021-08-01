@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.hlink.Helper.sql;
+package com.hlink.helper.sql;
 
 import org.apache.flink.table.api.StatementSet;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;

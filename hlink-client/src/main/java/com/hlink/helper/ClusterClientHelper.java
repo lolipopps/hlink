@@ -15,30 +15,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.hlink.helper;
 
-package com.hlink.Helper.sql;
+import com.hlink.job.JobDeployer;
+import org.apache.flink.client.program.ClusterClient;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.flink.table.api.StatementSet;
-import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
+/**
+ * @program: flinkx
+ * @author: xiuzhu
+ * @create: 2021/05/31
+ */
+public interface ClusterClientHelper {
 
-import java.net.URL;
-import java.util.List;
-
-
-public class InsertStmtParser extends AbstractStmtParser {
-
-    @Override
-    public boolean canHandle(String sql) {
-        return StringUtils.isNotBlank(sql) && sql.trim().toLowerCase().startsWith("insert");
-    }
-
-    @Override
-    public void execStmt(
-            String sql,
-            StreamTableEnvironment tableEnvironment,
-            StatementSet statementSet,
-            List<URL> jarUrlList) {
-        statementSet.addInsertSql(sql);
-    }
+    ClusterClient submit(JobDeployer jobDeployer) throws Exception;
 }

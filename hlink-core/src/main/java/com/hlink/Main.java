@@ -19,9 +19,9 @@ package com.hlink;
 
 
 import com.google.common.base.Preconditions;
-import com.hlink.Helper.ExecuteProcessHelper;
-import com.hlink.Helper.MyLocalStreamEnvironmentHelper;
-import com.hlink.Helper.sql.SqlParser;
+import com.hlink.helper.ExecuteProcessHelper;
+import com.hlink.helper.MyLocalStreamEnvironmentHelper;
+import com.hlink.helper.sql.SqlParser;
 import com.hlink.conf.CodeConf;
 import com.hlink.conf.RestartConf;
 import com.hlink.conf.SpeedConf;

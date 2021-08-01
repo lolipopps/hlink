@@ -18,7 +18,7 @@
 
 package com.hlink.utils;
 
-import com.hlink.Helper.MyLocalStreamEnvironmentHelper;
+import com.hlink.helper.MyLocalStreamEnvironmentHelper;
 import com.hlink.classload.FlinkUserCodeClassLoaders;
 import com.hlink.enums.ConnectorLoadMode;
 import lombok.extern.slf4j.Slf4j;

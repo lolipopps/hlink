@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.hlink.Helper;
+package com.hlink.helper;
 
 import lombok.Data;
 import org.apache.flink.api.common.accumulators.LongCounter;

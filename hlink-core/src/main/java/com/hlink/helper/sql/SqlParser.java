@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.hlink.Helper.sql;
+package com.hlink.helper.sql;
 
 import com.hlink.exception.DtSqlParserException;
 import com.hlink.utils.DtStringUtil;

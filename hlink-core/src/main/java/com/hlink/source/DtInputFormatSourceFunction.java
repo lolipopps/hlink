@@ -17,7 +17,7 @@
 
 package com.hlink.source;
 
-import com.hlink.Helper.FormatStateHelper;
+import com.hlink.helper.FormatStateHelper;
 import com.hlink.source.input.BaseRichInputFormat;
 import com.hlink.utils.ExceptionUtil;
 import org.apache.flink.annotation.Internal;

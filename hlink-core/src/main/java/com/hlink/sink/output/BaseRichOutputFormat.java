@@ -19,7 +19,7 @@
 package com.hlink.sink.output;
 
 
-import com.hlink.Helper.FormatStateHelper;
+import com.hlink.helper.FormatStateHelper;
 import com.hlink.conf.FlinkCommonConf;
 import com.hlink.constants.Metrics;
 import com.hlink.converter.AbstractRowConverter;
