@@ -1,0 +1,87 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.hlink.utils;
+
+
+import com.hlink.conf.CodeConf;
+import com.hlink.conf.FlinkCommonConf;
+import org.apache.commons.io.Charsets;
+import org.apache.commons.lang3.StringUtils;
+
+import java.io.File;
+import java.net.URLDecoder;
+import java.util.Properties;
+
+/**
+ * Date: 2021/01/19
+ * Company: www.dtstack.com
+ *
+ * @author tudou
+ */
+public class PropertiesUtil {
+
+    /**
+     * 解析properties json字符串
+     * @param confStr json字符串
+     * @return Properties
+     * @throws Exception
+     */
+    public static Properties parseConf(String confStr) throws Exception{
+        if(StringUtils.isEmpty(confStr)){
+            return new Properties();
+        }
+
+        confStr = URLDecoder.decode(confStr, Charsets.UTF_8.toString());
+        return GsonUtil.GSON.fromJson(confStr, Properties.class);
+    }
+
+    /**
+     * Properties key value去空格
+     * @param confProperties
+     * @return
+     */
+    public static Properties propertiesTrim(Properties confProperties) {
+        Properties properties = new Properties();
+        confProperties.forEach(
+                (k, v) -> properties.put(k.toString().trim(), v.toString().trim())
+        );
+        return properties;
+    }
+
+    /**
+     * 初始化FlinkxCommonConf
+     * @param flinkCommonConf
+     * @param codeConf
+     */
+    public static void initFlinkxCommonConf(FlinkCommonConf flinkCommonConf, CodeConf codeConf){
+        flinkCommonConf.setSpeedBytes(codeConf.getSpeed().getBytes());
+        flinkCommonConf.setErrorRecord(codeConf.getErrorLimit().getRecord());
+        flinkCommonConf.setErrorPercentage(codeConf.getErrorLimit().getPercentage());
+        flinkCommonConf.setDirtyDataPath(codeConf.getDirty().getPath());
+        flinkCommonConf.setDirtyDataHadoopConf(codeConf.getDirty().getHadoopConfig());
+        flinkCommonConf.setFieldNameList(codeConf.getDirty().getReaderColumnNameList());
+        flinkCommonConf.setRestorePath(codeConf.getRestorePath());
+        if (codeConf.getMetricPluginConf() != null) {
+            flinkCommonConf.setMetricPluginRoot(codeConf.getRemotePluginPath() == null ?
+                    codeConf.getPluginRoot() + File.separator + "metrics" : codeConf.getRemotePluginPath());
+            flinkCommonConf.setMetricPluginName(codeConf.getMetricPluginConf().getPluginName());
+            flinkCommonConf.setMetricProps(codeConf.getMetricPluginConf().getPluginProp());
+        }
+
+    }
+}
