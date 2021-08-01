@@ -6,3 +6,4 @@ gen
 hlink-core/src/main/resources/
 hlink-core/src/test/
 hlink-core/target
+.idea
