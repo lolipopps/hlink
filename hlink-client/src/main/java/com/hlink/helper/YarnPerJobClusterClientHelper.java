@@ -17,6 +17,7 @@
  */
 package com.hlink.helper;
 
+
 import com.hlink.job.JobDeployer;
 import com.hlink.job.YarnConfLoader;
 import com.hlink.options.Options;
@@ -52,6 +53,11 @@ import java.util.List;
 import java.util.Properties;
 
 
+/**
+ * @program: flinkx
+ * @author: xiuzhu
+ * @create: 2021/05/31
+ */
 @Slf4j
 public class YarnPerJobClusterClientHelper implements ClusterClientHelper {
 
@@ -61,6 +67,7 @@ public class YarnPerJobClusterClientHelper implements ClusterClientHelper {
     public final static String JOBMANAGER_MEMORY_MB = "jobmanager.memory.process.size";
     public final static String TASKMANAGER_MEMORY_MB = "taskmanager.memory.process.size";
     public final static String SLOTS_PER_TASKMANAGER = "taskmanager.slots";
+
 
     @Override
     public ClusterClient submit(JobDeployer jobDeployer) throws Exception {
@@ -76,14 +83,16 @@ public class YarnPerJobClusterClientHelper implements ClusterClientHelper {
 
         Configuration flinkConfig = jobDeployer.getEffectiveConfiguration();
 
+//        KerberosInfo kerberosInfo = new KerberosInfo(launcherOptions.getKrb5conf(),launcherOptions.getKeytab(),launcherOptions.getPrincipal(), flinkConfig);
+//        kerberosInfo.verify();
         SecurityUtils.install(new SecurityConfiguration(flinkConfig));
 
         ClusterSpecification clusterSpecification = createClusterSpecification(jobDeployer);
         YarnClusterDescriptor descriptor = createPerJobClusterDescriptor(launcherOptions, flinkConfig);
 
-        ClusterClientProvider<ApplicationId> provider = descriptor.deployJobCluster(clusterSpecification, new JobGraph(), true);
+        ClusterClientProvider<ApplicationId> provider = descriptor.deployJobCluster(clusterSpecification, new JobGraph(launcherOptions.getJobName()), true);
         String applicationId = provider.getClusterClient().getClusterId().toString();
-        String flinkJobId = provider.getJobGraph().getJobID().toString();
+        String flinkJobId = clusterSpecification.getJobGraph().getJobID().toString();
         log.info("deploy per_job with appId: {}}, jobId: {}", applicationId, flinkJobId);
 
         return provider.getClusterClient();
@@ -168,7 +177,6 @@ public class YarnPerJobClusterClientHelper implements ClusterClientHelper {
                 .setSlotsPerTaskManager(slotsPerTaskManager)
                 .createClusterSpecification();
 
-
         clusterSpecification.setCreateProgramDelay(true);
 
         String pluginRoot = launcherOptions.getPluginRoot();
@@ -185,4 +193,6 @@ public class YarnPerJobClusterClientHelper implements ClusterClientHelper {
 
         return clusterSpecification;
     }
+
+
 }

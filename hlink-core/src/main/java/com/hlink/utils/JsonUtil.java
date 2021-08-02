@@ -17,21 +17,68 @@
  */
 package com.hlink.utils;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonInclude;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.core.JsonProcessingException;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.DeserializationFeature;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.MapperFeature;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
-
+import com.alibaba.fastjson.JSONObject;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
 import static java.util.stream.Collectors.toMap;
 
 public class JsonUtil {
+
+
+
+    /**
+     * 获取表的元数据结构
+     *
+     * @return HashMap<String, HashMap < String, String>>
+     */
+    public static Map<String, String> loadJson(String dimFilePath) {
+        try {
+            String dim = FileUtil.readJsonFile(dimFilePath);
+            JSONObject obj = JSONObject.parseObject(dim);
+            HashMap<String, String> res = new HashMap<>();
+            for (String key : obj.keySet()) {
+                String record = obj.getJSONObject(key).toJSONString();
+                res.put(key, record);
+            }
+            return res;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 获取表的元数据结构
+     *
+     */
+    public static Map<String, String> loadLineJson(String dimFilePath) {
+        try {
+            HashMap<String, String> res = new HashMap<>();
+            List<String> lists = FileUtil.readFileByLine(dimFilePath);
+            for(String li:lists) {
+                String obj = JSONObject.parseObject(li).toJSONString();
+                res.put(li, obj);
+
+            }
+            return res;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+
 
     public static final ObjectMapper objectMapper = new ObjectMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)

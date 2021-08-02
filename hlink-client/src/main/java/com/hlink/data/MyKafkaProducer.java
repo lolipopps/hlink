@@ -1,6 +1,5 @@
 package com.hlink.data;
-
-import com.dtstack.flinkx.client.util.JsonUtil;
+import com.hlink.utils.JsonUtil;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;

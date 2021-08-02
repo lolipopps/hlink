@@ -1,6 +1,4 @@
 package com.hlink.data;
-
-import com.hyt.rtdw.config.KafkaConfig;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.core.JsonProcessingException;
 import org.apache.kafka.common.serialization.StringSerializer;
 
@@ -8,9 +6,13 @@ import java.util.Properties;
 
 public class KafkaGenerator {
     public static void main(String[] args) throws JsonProcessingException, InterruptedException {
-        Properties props = KafkaConfig.buildKafkaProps();
+        Properties props = new Properties();
         props.put("key.serializer", StringSerializer.class.getName());
         props.put("value.serializer", StringSerializer.class.getName());
+        props.put("bootstrap.servers", "172.18.1.21:9092");
+        props.put("zookeeper.connect", "172.18.1.21:2181");
+        props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 
 //        Thread thread1 = new Thread(new Runnable() {
 //            @Override
@@ -36,16 +38,5 @@ public class KafkaGenerator {
         });
         thread2.start();
 
-        Thread thread3 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    JsonOrderDetailSender.sendMessage(props, 10);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        thread3.start();
     }
 }

@@ -72,14 +72,7 @@ public class JobGraphUtil {
     }
 
     public static PackagedProgram buildProgram(ClusterSpecification clusterSpecification) throws Exception {
-        String[] args = clusterSpecification.getProgramArgs();
         return PackagedProgram.newBuilder()
-                .setJarFile(clusterSpecification.getJarFile())
-                .setUserClassPaths(clusterSpecification.getClasspaths())
-                .setEntryPointClassName(clusterSpecification.getEntryPointClass())
-                .setConfiguration(clusterSpecification.getConfiguration())
-                .setSavepointRestoreSettings(clusterSpecification.getSpSetting())
-                .setArguments(args)
                 .build();
     }
 }
