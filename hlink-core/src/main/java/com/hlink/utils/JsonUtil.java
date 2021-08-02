@@ -24,6 +24,9 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import com.alibaba.fastjson.JSONObject;
+import com.hlink.constants.ConstantValue;
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +37,27 @@ import static java.util.stream.Collectors.toMap;
 
 public class JsonUtil {
 
+    public static String JsonValueReplace(String json, HashMap<String, String> parameter){
+        for(String item: parameter.keySet()){
+            if(json.contains("${"+item+"}")){
+                json = json.replace("${"+item+"}", parameter.get(item));
+            }
+        }
+        return json;
+    }
 
+    /**
+     * 将命令行中的修改命令转化为HashMap保存
+     */
+    public static HashMap<String, String> CommandTransform(String command) {
+        HashMap<String, String> parameter = new HashMap<>();
+        String[] split = StringUtils.split(command, ConstantValue.COMMA_SYMBOL);
+        for (String item : split) {
+            String[] temp = item.split(ConstantValue.EQUAL_SYMBOL);
+            parameter.put(temp[0], temp[1]);
+        }
+        return parameter;
+    }
 
     /**
      * 获取表的元数据结构
