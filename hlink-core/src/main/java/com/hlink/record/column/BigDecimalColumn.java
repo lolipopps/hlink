@@ -32,7 +32,7 @@ import java.util.Date;
  *
  * @author tudou
  */
-@Data
+
 public class BigDecimalColumn extends AbstractBaseColumn {
 
     public BigDecimalColumn(BigDecimal data) {
