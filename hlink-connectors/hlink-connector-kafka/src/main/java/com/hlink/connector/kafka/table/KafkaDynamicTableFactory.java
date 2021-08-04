@@ -17,10 +17,9 @@
  */
 
 package com.hlink.connector.kafka.table;
-
-import com.dtstack.flinkx.connector.kafka.sink.KafkaDynamicSink;
-import com.dtstack.flinkx.connector.kafka.source.KafkaDynamicSource;
-import com.dtstack.flinkx.connector.kafka.util.KafkaUtil;
+import com.hlink.connector.kafka.sink.KafkaDynamicSink;
+import com.hlink.connector.kafka.source.KafkaDynamicSource;
+import com.hlink.connector.kafka.util.KafkaUtil;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.common.serialization.SerializationSchema;
 import org.apache.flink.configuration.ConfigOption;
@@ -44,14 +43,13 @@ import org.apache.flink.table.data.RowData;
 import org.apache.flink.table.factories.*;
 import org.apache.flink.table.types.DataType;
 import org.apache.flink.types.RowKind;
-
 import javax.annotation.Nullable;
 import java.time.Duration;
 import java.util.*;
 import java.util.regex.Pattern;
 
+import static com.hlink.utils.FactoryUtil.SCAN_PARALLELISM;
 import static org.apache.flink.streaming.connectors.kafka.table.KafkaOptions.*;
-import static org.apache.flink.table.factories.FactoryUtil.SCAN_PARALLELISM;
 import static org.apache.flink.table.factories.FactoryUtil.SINK_PARALLELISM;
 
 /**
@@ -61,7 +59,7 @@ import static org.apache.flink.table.factories.FactoryUtil.SINK_PARALLELISM;
  **/
 public class KafkaDynamicTableFactory implements DynamicTableSourceFactory, DynamicTableSinkFactory {
 
-    public static final String IDENTIFIER = "kafka-x";
+    public static final String IDENTIFIER = "kafka";
 
     @Override
     public String factoryIdentifier() {

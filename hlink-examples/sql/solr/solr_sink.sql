@@ -26,7 +26,7 @@ CREATE TABLE kafka_source
     val_double double,
     val_date   timestamp
 ) WITH (
-    'connector' = 'kafka-x',
+    'connector' = 'kafka',
     'topic' = 'luna',
     'properties.bootstrap.servers' = '172.18.1.21:9092',
     'properties.group.id' = 'luna_g',

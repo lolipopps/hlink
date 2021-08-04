@@ -14,7 +14,7 @@ CREATE TABLE source_ods_fact_user_ippv
     dtdate    date,
     dttime    time
 ) WITH (
-      'connector' = 'kafka-x'
+      'connector' = 'kafka'
       ,'topic' = 'da'
       ,'properties.bootstrap.servers' = '172.18.1.21:9092'
       ,'properties.group.id' = 'luna_g'

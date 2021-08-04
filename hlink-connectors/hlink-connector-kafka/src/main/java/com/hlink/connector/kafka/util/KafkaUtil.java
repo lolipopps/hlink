@@ -16,8 +16,7 @@
  * limitations under the License.
  */
 package com.hlink.connector.kafka.util;
-
-import com.dtstack.flinkx.constants.ConstantValue;
+import com.hlink.constants.ConstantValue;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.flink.streaming.connectors.kafka.internals.KafkaTopicPartition;
 import org.apache.flink.streaming.connectors.kafka.table.KafkaOptions;
@@ -105,12 +104,12 @@ public class KafkaUtil {
                             });
             String keyDeserializer = tableOptions.get("key.deserializer");
             if(StringUtils.isNotBlank(keyDeserializer)){
-                kafkaProperties.put("key.deserializer", "com.dtstack.flinkx.connector.kafka.deserializer.DtKafkaDeserializer");
+                kafkaProperties.put("key.deserializer", "com.hlink.connector.kafka.deserializer.DtKafkaDeserializer");
                 kafkaProperties.put("dt.key.deserializer", keyDeserializer);
             }
             String valueDeserializer = tableOptions.get("value.deserializer");
             if(StringUtils.isNotBlank(valueDeserializer)){
-                kafkaProperties.put("value.deserializer", "com.dtstack.flinkx.connector.kafka.deserializer.DtKafkaDeserializer");
+                kafkaProperties.put("value.deserializer", "com.hlink.connector.kafka.deserializer.DtKafkaDeserializer");
                 kafkaProperties.put("dt.value.deserializer", valueDeserializer);
             }
         }

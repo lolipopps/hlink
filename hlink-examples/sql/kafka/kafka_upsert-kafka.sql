@@ -16,7 +16,7 @@ CREATE TABLE source_ods_fact_user_ippv
     --,
     --WATERMARK FOR datethree AS datethree - INTERVAL '5' SECOND
 ) WITH (
-      'connector' = 'kafka-x'
+      'connector' = 'kafka'
       ,'topic' = 'da'
       ,'properties.bootstrap.servers' = '172.18.1.21:9092'
       ,'properties.group.id' = 'luna_g'
@@ -48,7 +48,7 @@ CREATE TABLE result_total_pvuv_min
 ) WITH (
       -- 'connector' = 'stream-x'
 
-      'connector' = 'upsert-kafka-x'
+      'connector' = 'upsert-kafka'
 
       ,'topic' = 'test'
       ,'properties.bootstrap.servers' = '172.18.1.21:9092'

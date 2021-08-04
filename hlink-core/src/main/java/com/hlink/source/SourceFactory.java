@@ -38,11 +38,7 @@ import org.apache.flink.util.Preconditions;
 import java.util.Collections;
 
 /**
- * Abstract specification of Reader Plugin
- *
- * <p>Company: www.dtstack.com
- *
- * @author huyifan.zju@163.com
+ * 输入端定义
  */
 public abstract class SourceFactory implements RawTypeConvertible {
 

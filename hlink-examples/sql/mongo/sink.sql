@@ -13,7 +13,7 @@ CREATE TABLE ods_k
     val_bool      BOOLEAN
 --     PROCTIME AS PROCTIME()
 ) WITH (
-    'connector' = 'kafka-x',
+    'connector' = 'kafka',
     'topic' = 'luna',
     'properties.bootstrap.servers' = '172.18.1.21:9092',
     'properties.group.id' = 'luna_g',

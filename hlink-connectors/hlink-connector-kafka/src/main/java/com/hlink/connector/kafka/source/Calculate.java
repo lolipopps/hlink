@@ -21,11 +21,7 @@ package com.hlink.connector.kafka.source;
 import org.apache.kafka.clients.consumer.internals.SubscriptionState;
 import org.apache.kafka.common.TopicPartition;
 
-/**
- * company: www.dtstack.com
- * @author: toutian
- * create: 2019/12/24
- */
+
 @FunctionalInterface
 public interface Calculate {
 

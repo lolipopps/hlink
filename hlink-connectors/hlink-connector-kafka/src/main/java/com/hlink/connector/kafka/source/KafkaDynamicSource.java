@@ -18,6 +18,7 @@
 
 package com.hlink.connector.kafka.source;
 
+import com.hlink.table.connector.source.ParallelSourceFunctionProvider;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.common.typeinfo.TypeInformation;

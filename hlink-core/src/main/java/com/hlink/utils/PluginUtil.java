@@ -66,7 +66,7 @@ public class PluginUtil {
      * 获取插件jar包
      *
      * @param pluginDir         插件包路径
-     * @param factoryIdentifier SQL任务插件包名称，如：kafka-x
+     * @param factoryIdentifier SQL任务插件包名称，如：kafka
      * @return
      * @throws MalformedURLException
      */

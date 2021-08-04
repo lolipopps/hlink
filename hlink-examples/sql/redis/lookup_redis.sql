@@ -15,7 +15,7 @@ CREATE TABLE source
 ) WITH (
       -- 'connector' = 'stream-x'
 
-      'connector' = 'kafka-x'
+      'connector' = 'kafka'
       ,'topic' = 'da'
       ,'properties.bootstrap.servers' = 'kudu1:9092'
       ,'properties.group.id' = 'luna_g'

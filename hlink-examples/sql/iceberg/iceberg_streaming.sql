@@ -21,7 +21,7 @@ CREATE TABLE ods_k (
     id BIGINT,
     name STRING
 ) WITH (
-    'connector' = 'kafka-x',
+    'connector' = 'kafka',
     'topic' = 'luna',
     'properties.bootstrap.servers' = '172.18.1.21:9092',
     'format' = 'json',

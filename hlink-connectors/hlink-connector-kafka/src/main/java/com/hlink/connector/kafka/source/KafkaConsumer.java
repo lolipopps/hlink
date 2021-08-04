@@ -19,6 +19,7 @@
 package com.hlink.connector.kafka.source;
 
 
+import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 import com.hlink.helper.FormatStateHelper;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.api.common.state.ListState;
@@ -31,7 +32,6 @@ import org.apache.flink.metrics.MetricGroup;
 import org.apache.flink.runtime.state.FunctionInitializationContext;
 import org.apache.flink.runtime.state.FunctionSnapshotContext;
 import org.apache.flink.streaming.api.operators.StreamingRuntimeContext;
-import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 import org.apache.flink.streaming.connectors.kafka.KafkaDeserializationSchema;
 import org.apache.flink.streaming.connectors.kafka.config.OffsetCommitMode;
 import org.apache.flink.streaming.connectors.kafka.internals.AbstractFetcher;
@@ -46,7 +46,7 @@ import java.util.Properties;
 import java.util.regex.Pattern;
 
 
-public class KafkaConsumer extends FlinkKafkaConsumer<RowData>{
+public class KafkaConsumer extends FlinkKafkaConsumer<RowData> {
 
     private final KafkaDeserializationSchema<RowData> deserializationSchema;
     private Properties props;

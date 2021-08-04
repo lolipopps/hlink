@@ -12,7 +12,7 @@ CREATE TABLE source
     dttime    time,
     PROCTIME AS PROCTIME()
 ) WITH (
-      'connector' = 'kafka-x'
+      'connector' = 'kafka'
       ,'topic' = 'da'
       ,'properties.bootstrap.servers' = 'kudu1:9092'
       ,'properties.group.id' = 'luna_g'

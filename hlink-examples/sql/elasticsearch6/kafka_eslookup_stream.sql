@@ -5,7 +5,7 @@ CREATE TABLE k_source
     age       bigint,
     PROCTIME AS PROCTIME()
 ) WITH (
-      'connector' = 'kafka-x'
+      'connector' = 'kafka'
       ,'topic' = 'da'
       ,'properties.bootstrap.servers' = '172.18.1.21:9092'
       ,'properties.group.id' = 'luna_g'

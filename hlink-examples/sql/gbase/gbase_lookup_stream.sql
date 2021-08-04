@@ -5,7 +5,7 @@ CREATE TABLE source
     age  tinyint,
     PROCTIME AS PROCTIME()
 ) WITH (
-      'connector' = 'kafka-x'
+      'connector' = 'kafka'
       ,'topic' = 'tiezhu_in_one'
       ,'properties.bootstrap.servers' = 'kudu1:9092'
       ,'properties.group.id' = 'luna_g'

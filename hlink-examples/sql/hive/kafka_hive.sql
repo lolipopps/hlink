@@ -18,7 +18,7 @@ CREATE TABLE source
     col_timestamp  timestamp,
     col_date       date
 ) WITH (
-      'connector' = 'kafka-x'
+      'connector' = 'kafka'
       ,'topic' = 'tudou'
       ,'properties.bootstrap.servers' = 'ip:9092'
       ,'scan.startup.mode' = 'latest-offset'

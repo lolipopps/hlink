@@ -18,19 +18,20 @@
 
 package com.hlink.connector.kafka.source;
 
-import com.dtstack.flinkx.conf.SyncConf;
-import com.dtstack.flinkx.connector.kafka.adapter.StartupModeAdapter;
-import com.dtstack.flinkx.connector.kafka.conf.KafkaConf;
-import com.dtstack.flinkx.connector.kafka.converter.KafkaColumnConverter;
-import com.dtstack.flinkx.connector.kafka.enums.StartupMode;
-import com.dtstack.flinkx.connector.kafka.serialization.RowDeserializationSchema;
-import com.dtstack.flinkx.connector.kafka.util.KafkaUtil;
-import com.dtstack.flinkx.converter.RawTypeConverter;
-import com.dtstack.flinkx.source.SourceFactory;
-import com.dtstack.flinkx.util.GsonUtil;
+ 
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.hlink.conf.CodeConf;
+import com.hlink.connector.kafka.adapter.StartupModeAdapter;
+import com.hlink.connector.kafka.conf.KafkaConf;
+import com.hlink.connector.kafka.converter.KafkaColumnConverter;
+import com.hlink.connector.kafka.enums.StartupMode;
+import com.hlink.connector.kafka.serialization.RowDeserializationSchema;
+import com.hlink.connector.kafka.util.KafkaUtil;
+import com.hlink.converter.RawTypeConverter;
+import com.hlink.source.SourceFactory;
+import com.hlink.utils.GsonUtil;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.data.RowData;
@@ -50,7 +51,7 @@ public class KafkaSourceFactory extends SourceFactory {
     /** kafka conf */
     protected KafkaConf kafkaConf;
 
-    public KafkaSourceFactory(SyncConf config, StreamExecutionEnvironment env) {
+    public KafkaSourceFactory(CodeConf config, StreamExecutionEnvironment env) {
         super(config, env);
         Gson gson = new GsonBuilder().registerTypeAdapter(StartupMode.class, new StartupModeAdapter()).create();
         GsonUtil.setTypeAdapter(gson);
@@ -94,7 +95,7 @@ public class KafkaSourceFactory extends SourceFactory {
                 break;
         }
         consumer.setCommitOffsetsOnCheckpoints(kafkaConf.getGroupId() != null);
-        return createInput(consumer, syncConf.getReader().getName());
+        return createInput(consumer, codeConf.getReader().getName());
     }
 
     @Override

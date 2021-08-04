@@ -3,7 +3,7 @@ CREATE TABLE source (
   id   INT,
   name STRING
 ) WITH (
-  'connector' = 'kafka-x',
+  'connector' = 'kafka',
   'topic' = 'test',
   'properties.bootstrap.servers' = '172.18.1.21:9092',
   'properties.group.id' = 'dodge',
