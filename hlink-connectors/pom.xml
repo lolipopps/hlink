@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>hlink-connector-kafka</module>
+        <module>hlink-connector-console</module>
     </modules>
     <dependencies>
         <dependency>

@@ -49,7 +49,7 @@ CREATE TABLE sink
     col_timestamp timestamp,
     col_date date
 ) WITH (
-      'connector' = 'stream-x'
+      'connector' = 'console'
     ,'print' = 'true'
       );
 

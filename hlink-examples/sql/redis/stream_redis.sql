@@ -19,7 +19,7 @@ CREATE TABLE source
     , avarchar  varchar
     , asmallint SMALLINT
 ) WITH (
-      'connector' = 'stream-x'
+      'connector' = 'console'
       ,'number-of-rows' = '10'
       );
 

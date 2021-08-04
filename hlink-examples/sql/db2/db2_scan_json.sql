@@ -81,7 +81,7 @@ CREATE TABLE sink
     atinyint    smallint ,
 	PRIMARY KEY(id) NOT ENFORCED
 ) WITH (
-      'connector' = 'stream-x',
+      'connector' = 'console',
 	  'sink.parallelism' = '1'
       );
 

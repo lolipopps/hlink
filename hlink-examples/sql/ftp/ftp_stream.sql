@@ -39,7 +39,7 @@ CREATE TABLE SINK (
     C_TIMESTAMP TIMESTAMP,
     C_DATE DATE
 ) WITH (
-    'connector' = 'stream-x',
+    'connector' = 'console',
     'print' = 'true'
 );
 

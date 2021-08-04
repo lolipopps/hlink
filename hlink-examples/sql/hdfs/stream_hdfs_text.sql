@@ -15,7 +15,7 @@ CREATE TABLE source
     col_timestamp timestamp,
     col_date date
 ) WITH (
-      'connector' = 'stream-x'
+      'connector' = 'console'
     ,'number-of-rows' = '10000'
 );
 

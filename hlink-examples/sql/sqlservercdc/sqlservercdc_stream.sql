@@ -26,7 +26,7 @@ CREATE TABLE sink
     day2 timestamp,
     sale decimal(10,3)
 ) WITH (
-      'connector' = 'stream-x'
+      'connector' = 'console'
       );
 
 insert into sink

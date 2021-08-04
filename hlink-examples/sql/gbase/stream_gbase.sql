@@ -32,7 +32,7 @@ CREATE TABLE sink
     todayDate      date,
     todayTime      time
 ) WITH (
-      'connector' = 'stream-x',
+      'connector' = 'console',
       'number-of-rows' = '50'
       );
 

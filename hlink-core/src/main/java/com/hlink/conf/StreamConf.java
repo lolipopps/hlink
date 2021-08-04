@@ -26,12 +26,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Date: 2021/01/18
- * Company: www.dtstack.com
- *
- * @author tudou
- */
+
 public class StreamConf implements Serializable {
     private static final long serialVersionUID = 1L;
 

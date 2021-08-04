@@ -19,7 +19,7 @@ CREATE TABLE sink
     TTIME          DATE,
     TTIMESTAMP     TIMESTAMP
 ) WITH (
-      'connector' = 'stream-x'
+      'connector' = 'console'
       );
 
 insert into sink

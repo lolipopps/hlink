@@ -36,7 +36,7 @@ CREATE TABLE sink
    esid varchar,
    birthday timestamp)
 WITH(
-'connector' = 'stream-x'
+'connector' = 'console'
 );
 
 INSERT INTO

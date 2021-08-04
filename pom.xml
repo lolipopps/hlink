@@ -37,7 +37,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-            <scope>compile</scope>
         </dependency>
         <!--划重点啦-->
         <dependency>

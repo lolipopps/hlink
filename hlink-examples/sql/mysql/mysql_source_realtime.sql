@@ -96,7 +96,7 @@ CREATE TABLE sink
     abinary     BYTES,
     atinyint    tinyint
 ) WITH (
-      'connector' = 'stream-x'
+      'connector' = 'console'
       );
 
 insert into sink

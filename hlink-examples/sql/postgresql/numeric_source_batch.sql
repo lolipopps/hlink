@@ -40,7 +40,7 @@ CREATE TABLE sink_stream (
      val_decimal     DECIMAL,
      val_numeric     DECIMAL
 ) WITH (
-    'connector' = 'stream-x'
+    'connector' = 'console'
 );
 
 INSERT INTO sink_stream

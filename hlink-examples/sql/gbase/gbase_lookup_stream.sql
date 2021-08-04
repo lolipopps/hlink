@@ -66,7 +66,7 @@ CREATE TABLE sink
     todayTime      time,
     todayTimestamp timestamp
 ) WITH (
-      'connector' = 'stream-x'
+      'connector' = 'console'
       );
 
 create

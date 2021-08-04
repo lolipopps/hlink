@@ -13,7 +13,7 @@ CREATE TABLE source
     , dttime    time
     , PROCTIME AS PROCTIME()
 ) WITH (
-      -- 'connector' = 'stream-x'
+      -- 'connector' = 'console'
 
       'connector' = 'kafka'
       ,'topic' = 'da'
@@ -125,7 +125,7 @@ CREATE TABLE sink
     , asmallint SMALLINT
     -- , primary key (id, name) NOT ENFORCED
 ) WITH (
-      'connector' = 'stream-x'
+      'connector' = 'console'
       );
 
 

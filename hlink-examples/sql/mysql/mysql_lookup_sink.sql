@@ -138,7 +138,7 @@ CREATE TABLE sink
     atinyint    tinyint
     , PRIMARY KEY (id) NOT ENFORCED  -- 如果定义了，则根据该字段更新。否则追加
 ) WITH (
-      -- 'connector' = 'stream-x'
+      -- 'connector' = 'console'
 
       'connector' = 'mysql-x',
       'url' = 'jdbc:mysql://localhost:3306/test',

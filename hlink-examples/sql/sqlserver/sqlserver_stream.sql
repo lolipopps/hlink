@@ -45,7 +45,7 @@ CREATE TABLE sink
     col_varbinary  varbinary
 
 )with(
-   'connector'='stream-x'
+   'connector'='console'
 );
 insert into sink
 select *

@@ -38,7 +38,7 @@ CREATE TABLE sink_stream (
      val_timetz            TIME,
      val_boolean           BOOLEAN
 ) WITH (
-    'connector' = 'stream-x'
+    'connector' = 'console'
 );
 
 INSERT INTO sink_stream

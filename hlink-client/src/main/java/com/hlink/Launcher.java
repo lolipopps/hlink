@@ -23,6 +23,7 @@ import com.hlink.job.JobDeployer;
 import com.hlink.options.OptionParser;
 import com.hlink.options.Options;
 import com.hlink.utils.JsonUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.flink.client.deployment.ClusterDeploymentException;
 import org.apache.flink.configuration.ConfigConstants;
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+@Slf4j
 public class Launcher {
 
     public static final String KEY_FLINKX_HOME = "FLINKX_HOME";
@@ -46,6 +48,7 @@ public class Launcher {
 //	-job flinkx-local-test/src/main/demo/json/stream/stream.json
 // E:\code\flinkx\flinkx-examples\sql\kafka\kafka_kafka.sql
 //	-pluginRoot flinkxplugins
+
         ArrayList<String> arg = new ArrayList<>();
         arg.add("-mode");
         arg.add("local");
@@ -61,7 +64,7 @@ public class Launcher {
         Options launcherOptions = optionParser.getOptions();
 
         findDefaultConfigDir(launcherOptions);
-
+        log.info("-------------begin--------------------");
         List<String> argList = optionParser.getProgramExeArgList();
 
         // 将argList转化为HashMap，方便通过参数名称来获取参数值

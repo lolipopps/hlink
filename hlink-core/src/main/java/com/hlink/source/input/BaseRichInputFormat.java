@@ -35,6 +35,7 @@ import com.hlink.utils.ExceptionUtil;
 import com.hlink.utils.JsonUtil;
 import jdk.nashorn.internal.ir.debug.ObjectSizeCalculator;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.flink.api.common.accumulators.LongCounter;
 import org.apache.flink.api.common.io.DefaultInputSplitAssigner;
 import org.apache.flink.api.common.io.RichInputFormat;
@@ -55,19 +56,18 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * FlinkX里面所有自定义inputFormat的抽象基类
+ * Flink里面所有自定义inputFormat的抽象基类
  *
  * 扩展了org.apache.flink.api.common.io.RichInputFormat, 因而可以通过{@link #getRuntimeContext()}获取运行时执行上下文
  * 自动完成
  * 用户只需覆盖openInternal,closeInternal等方法, 无需操心细节
- *
- * @author jiangbo
  */
 @Data
+@Slf4j
 public abstract class BaseRichInputFormat extends RichInputFormat<RowData, InputSplit> {
     protected static final long serialVersionUID = 1L;
 
-    protected final Logger LOG = LoggerFactory.getLogger(getClass());
+
 
     /** BaseRichInputFormat是否结束 */
     private final AtomicBoolean isClosed = new AtomicBoolean(false);
@@ -122,7 +122,7 @@ public abstract class BaseRichInputFormat extends RichInputFormat<RowData, Input
         try {
             return createInputSplitsInternal(minNumSplits);
         } catch (Exception e){
-            LOG.warn("error to create InputSplits", e);
+            log.warn("error to create InputSplits", e);
             return new ErrorInputSplit[]{new ErrorInputSplit(ExceptionUtil.getErrorMessage(e))};
         }
     }
@@ -150,7 +150,7 @@ public abstract class BaseRichInputFormat extends RichInputFormat<RowData, Input
 
         openInternal(inputSplit);
 
-        LOG.info(
+        log.info(
                 "[{}] open successfully, \ninputSplit = {}, \n[{}]: \n{} ",
                 this.getClass().getSimpleName(),
                 inputSplit,
@@ -185,7 +185,7 @@ public abstract class BaseRichInputFormat extends RichInputFormat<RowData, Input
             internalRow = nextRecordInternal(rowData);
         } catch (ReadRecordException e){
             // todo 脏数据记录
-            LOG.error(e.toString());
+            log.error(e.toString());
         }
         if(internalRow != null){
             updateDuration();
@@ -234,7 +234,7 @@ public abstract class BaseRichInputFormat extends RichInputFormat<RowData, Input
         }
 
         isClosed.set(true);
-        LOG.info("subtask input close finished");
+        log.info("subtask input close finished");
     }
 
     /**

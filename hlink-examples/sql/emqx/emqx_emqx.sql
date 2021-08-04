@@ -39,7 +39,7 @@ CREATE TABLE result_total_pvuv_min
     dttime    time
 
 ) WITH (
-      -- 'connector' = 'stream-x'
+      -- 'connector' = 'console'
 
       'connector' = 'emqx-x'
       ,'broker' = 'tcp://localhost:1883'

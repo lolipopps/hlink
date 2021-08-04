@@ -67,7 +67,7 @@ CREATE TABLE sink
     t_float double,
     kind varchar
 ) WITH (
-      'connector' = 'stream-x'
+      'connector' = 'console'
       );
 
 insert into sink

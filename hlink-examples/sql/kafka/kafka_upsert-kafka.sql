@@ -46,7 +46,7 @@ CREATE TABLE result_total_pvuv_min
     PRIMARY KEY (id, name, money, dateone, age, datethree, datesix, datenigth, dtdate, dttime, ts,
                  partition_id) NOT ENFORCED
 ) WITH (
-      -- 'connector' = 'stream-x'
+      -- 'connector' = 'console'
 
       'connector' = 'upsert-kafka'
 

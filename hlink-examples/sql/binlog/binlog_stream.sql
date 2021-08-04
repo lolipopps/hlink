@@ -84,7 +84,7 @@ CREATE TABLE sink
     col_varbinary  bytes,
     col_json       varchar
 ) WITH (
-      'connector' = 'stream-x'
+      'connector' = 'console'
       );
 
 insert into sink

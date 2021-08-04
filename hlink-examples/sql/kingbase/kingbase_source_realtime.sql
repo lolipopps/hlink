@@ -94,7 +94,7 @@ CREATE TABLE sink
     t_text  varchar,
     t_float double
 ) WITH (
-      'connector' = 'stream-x'
+      'connector' = 'console'
       );
 
 insert into sink

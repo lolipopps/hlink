@@ -15,7 +15,7 @@ CREATE TABLE FILE_SOURCE (
     C_TIMESTAMP TIMESTAMP,
     C_DATE DATE
 ) WITH (
-    'connector' = 'stream-x',
+    'connector' = 'console',
     'number-of-rows' = '10000'
 );
 

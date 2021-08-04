@@ -82,7 +82,7 @@ CREATE TABLE sink
     ABINARY     BYTES,
     ATINYINT    smallint
 ) WITH (
-      'connector' = 'stream-x',
+      'connector' = 'console',
 	  'sink.parallelism' = '1'
       );
 

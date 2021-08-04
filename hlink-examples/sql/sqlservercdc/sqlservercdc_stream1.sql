@@ -51,7 +51,7 @@ CREATE TABLE sink
     x17 varchar,
     x18 float
 ) WITH (
-      'connector' = 'stream-x'
+      'connector' = 'console'
       );
 
 insert into sink

@@ -56,7 +56,7 @@ CREATE TABLE result_total_pvuv_min
     , `timestamp-type` STRING
     , partition_id BIGINT
 ) WITH (
-      'connector' = 'stream-x'
+      'connector' = 'console'
 
       -- 'connector' = 'kafka'
       -- ,'topic' = 'test'

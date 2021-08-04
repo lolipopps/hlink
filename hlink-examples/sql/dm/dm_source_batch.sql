@@ -84,7 +84,7 @@ CREATE TABLE sink
     REAL1 FLOAT,
     TEXT1 VARCHAR
     ) WITH (
-      'connector' = 'stream-x'
+      'connector' = 'console'
       );
 
 insert into sink

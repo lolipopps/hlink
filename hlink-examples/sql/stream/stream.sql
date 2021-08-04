@@ -11,7 +11,7 @@ CREATE TABLE source
     dtdate    date,
     dttime    time
 ) WITH (
-      'connector' = 'stream-x',
+      'connector' = 'console',
       'number-of-rows' = '10', -- 输入条数，默认无限
       'rows-per-second' = '1' -- 每秒输入条数，默认不限制
       );
@@ -29,7 +29,7 @@ CREATE TABLE sink
     dtdate    date,
     dttime    time
 ) WITH (
-      'connector' = 'stream-x',
+      'connector' = 'console',
       'print' = 'true'
       );
 

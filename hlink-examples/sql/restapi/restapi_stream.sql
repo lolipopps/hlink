@@ -52,7 +52,7 @@ CREATE TABLE sink
     id             int,
     name      varchar
 ) WITH (
-      'connector' = 'stream-x'
+      'connector' = 'console'
       );
 
 insert into sink
